@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -112,7 +111,7 @@ export function AnimeList({ collectionId, collectionTitle }: AnimeListProps) {
         <Table>
           <TableHeader>
             <TableRow className="border-b-zinc-800">
-              <TableHead className="text-white font-semibold w-[50%]">
+              <TableHead className="text-white font-semibold w-[30%]">
                 Anime
               </TableHead>
               <TableHead className="text-center text-white font-semibold">
@@ -123,6 +122,12 @@ export function AnimeList({ collectionId, collectionTitle }: AnimeListProps) {
               </TableHead>
               <TableHead className="text-center text-white font-semibold">
                 Estado
+              </TableHead>
+              <TableHead className="text-center text-white font-semibold">
+                Inicio
+              </TableHead>
+              <TableHead className="text-center text-white font-semibold">
+                Fin
               </TableHead>
               <TableHead className="text-right text-white font-semibold">
                 Acciones
@@ -183,6 +188,16 @@ export function AnimeList({ collectionId, collectionTitle }: AnimeListProps) {
                       handleStatusChange(anime.mal_id, newStatus)
                     }
                   />
+                </TableCell>
+
+                {/* Celda de Fecha de Inicio */}
+                <TableCell className="text-center text-zinc-300">
+                  {anime.started_at ? anime.started_at : <span className="text-zinc-500">—</span>}
+                </TableCell>
+
+                {/* Celda de Fecha de Fin */}
+                <TableCell className="text-center text-zinc-300">
+                  {anime.finished_at ? anime.finished_at : <span className="text-zinc-500">—</span>}
                 </TableCell>
 
                 {/* Celda de Acciones */}

@@ -62,4 +62,7 @@ export interface AnimeList {
     url: string;
   }[];
   collection_id: string; // Relación con la colección
+  started_at?: string;   // Fecha de inicio (opcional)
+  finished_at?: string;  // Fecha de fin (opcional)
+  notes?: string;        // Notas personales (opcional)
 }
