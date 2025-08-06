@@ -1,0 +1,9 @@
+---
+export const prerender = false;
+import AnimeDetailPage from "@/components/anime/AnimeDetail";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+const { id } = Astro.params;
+---
+<BaseLayout>
+    <AnimeDetailPage params={{ id:id || "" }} client:visible />
+</BaseLayout>

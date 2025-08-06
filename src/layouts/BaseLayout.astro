@@ -1,0 +1,24 @@
+---
+const { title = 'AnimeLi' } = Astro.props;
+import "@/styles/global.css";
+import { AppWrapper } from '@/components/common/AppWrapper'; // 1. Importar el nuevo wrapper
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-zinc-900 text-white">
+    <div class="max-w-5xl mx-auto">
+      {/* 2. Usar AppWrapper en lugar de AuthProvider y NavBar por separado */}
+      <AppWrapper client:load>
+        <main>
+          <slot />
+        </main>
+      </AppWrapper>
+    </div>
+  </body>
+</html>

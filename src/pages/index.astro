@@ -1,11 +1,29 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { CardAnime } from "@/components/anime/AnimeCard.tsx";
+import { getRecentAnimes } from "@/api/jikan";
+import type { Anime } from "@/types";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const animes: Anime[] = await getRecentAnimes();
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout>
+  <div>
+	<h1 class="text-3xl font-bold mb-4">Animes Recientes</h1>
+	<p class="text-gray-700 mb-6">Explora los anime recientes de la temporada</p>
+	<div class="grid grid-cols-4 gap-5">
+		{animes.map((anime) => (
+			<CardAnime 
+				mal_id={anime.mal_id}
+				title={anime.title}
+				images={anime.images}         
+				synopsis={anime.synopsis}
+				type={anime.type}
+				score={anime.score}
+				genres={anime.genres}  
+			/>
+		))}
+	</div>
+  </div>	
+</BaseLayout>
+

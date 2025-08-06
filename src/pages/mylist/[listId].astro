@@ -1,0 +1,11 @@
+---
+export const prerender = false;
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { AnimeList } from '@/components/anime/AnimeList';
+
+const { listId } = Astro.params;
+---
+
+<BaseLayout title={`Mi Lista - ${listId}`}>
+  {listId && <AnimeList collectionId={listId} collectionTitle={`Collection ${listId}`} client:load />}
+</BaseLayout>
