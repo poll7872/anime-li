@@ -24,10 +24,7 @@ export async function getAnimesFromCollection(
 
 export async function addAnimeToCollection(
   collectionId: string,
-  animeData: Pick<
-    Anime,
-    "mal_id" | "title" | "score" | "episodes" | "status" | "type" | "year"
-  > & { image: string; episodesWatched: number }
+  animeData: Omit<AnimeList, "collection_id">
 ): Promise<void> {
   const { data: userData } = await supabase.auth.getUser();
   if (!userData?.user) {
